@@ -12,13 +12,16 @@
 
 ActiveRecord::Schema.define(version: 20190225192351) do
 
-  create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "category_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "category_types", force: :cascade do |t|
     t.string "name"
     t.bigint "category_id"
     t.datetime "created_at", null: false
@@ -26,13 +29,13 @@ ActiveRecord::Schema.define(version: 20190225192351) do
     t.index ["category_id"], name: "index_category_types_on_category_id"
   end
 
-  create_table "colors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "colors", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "product_sizes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "product_sizes", force: :cascade do |t|
     t.bigint "size_id"
     t.bigint "product_id"
     t.datetime "created_at", null: false
@@ -41,7 +44,7 @@ ActiveRecord::Schema.define(version: 20190225192351) do
     t.index ["size_id"], name: "index_product_sizes_on_size_id"
   end
 
-  create_table "product_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "product_types", force: :cascade do |t|
     t.bigint "category_type_id"
     t.bigint "product_id"
     t.datetime "created_at", null: false
@@ -50,7 +53,7 @@ ActiveRecord::Schema.define(version: 20190225192351) do
     t.index ["product_id"], name: "index_product_types_on_product_id"
   end
 
-  create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "products", force: :cascade do |t|
     t.string "name"
     t.integer "price"
     t.integer "quantity"
@@ -60,7 +63,7 @@ ActiveRecord::Schema.define(version: 20190225192351) do
     t.index ["category_id"], name: "index_products_on_category_id"
   end
 
-  create_table "sizes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "sizes", force: :cascade do |t|
     t.string "name"
     t.string "gender"
     t.bigint "category_id"

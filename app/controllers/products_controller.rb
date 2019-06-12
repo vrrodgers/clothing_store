@@ -9,6 +9,9 @@ class ProductsController < ApplicationController
    def new
     @product = Product.new
    end
+   def show 
+    @images = Image.all
+   end
 
     def create
         @product = Product.new(product_params)
@@ -32,6 +35,7 @@ class ProductsController < ApplicationController
       @product.destroy
     end
 
+
     private 
 
     def set_product
@@ -42,7 +46,10 @@ class ProductsController < ApplicationController
         params.require(:product).permit(:name,
                                         :price,
                                         :quantity,
-                                        :category_id
+                                        :category_id,
+                                        :link,
+                                        :primary
+                
                                         )
     end
 

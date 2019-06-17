@@ -8,9 +8,10 @@ class ProductsController < ApplicationController
 
    def new
     @product = Product.new
+    
    end
    def show 
-    @images = Image.all
+    @image = Image.all
    end
 
     def create

@@ -10,29 +10,27 @@
                 <div class="inner-nav">
                     <ul>
                         <!-- Home-->
-                        <li class="menu-item-has-children menu-item-has-mega-menu"><a href="#">Home</a>
+                        <li class="menu-item-has-children menu-item-has-mega-menu"> <%= link_to "Home", root_path, class: 'nav-link' %> 
                            
                         </li>
-                        <!-- Home end-->
-                        <!-- Pages-->
-                        <li class="menu-item-has-children"><a href="#">Contact Us</a>
+                        
+                        <li ><%= link_to "Contact US", contact_path, class: 'nav-link' %>
                             
                         </li>
-                        <!-- Pages end-->
-                        <!-- Portfolio-->
-                        <li class="menu-item-has-children"><a href="#">About Us</a>
+                        <li>
+                       
+                          <%= link_to "About Us", about_me_path, class: 'nav-link' %> 
                             
                         </li>
-                        <!-- Portfolio end-->
-                        <!-- Blog-->
+                        
+                        <li>
                         <li class="menu-item-has-children"><a href="#">My Account</a>
                            
                         </li>
                         
-                     
-                        <!-- Simple-->
-                        <li><a href="start.html">Cart</a></li>
-                    </ul>
+                      <li>
+                        <%= link_to "Cart", cart_path, class: 'nav-link' %> 
+                        </li>
                 </div>
             </div>
         </div>

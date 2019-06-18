@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190618134112) do
+ActiveRecord::Schema.define(version: 20190618152343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "carted_items", force: :cascade do |t|
+    t.bigint "product_id"
+    t.bigint "order_id"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_carted_items_on_order_id"
+    t.index ["product_id"], name: "index_carted_items_on_product_id"
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -42,6 +52,17 @@ ActiveRecord::Schema.define(version: 20190618134112) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_images_on_product_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.bigint "user_id"
+    t.decimal "sub_total", precision: 10, scale: 2
+    t.decimal "tax", precision: 10, scale: 2
+    t.decimal "total", precision: 10, scale: 2
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "product_sizes", force: :cascade do |t|
@@ -98,8 +119,11 @@ ActiveRecord::Schema.define(version: 20190618134112) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "carted_items", "orders"
+  add_foreign_key "carted_items", "products"
   add_foreign_key "category_types", "categories"
   add_foreign_key "images", "products"
+  add_foreign_key "orders", "users"
   add_foreign_key "product_sizes", "products"
   add_foreign_key "product_sizes", "sizes"
   add_foreign_key "product_types", "category_types"

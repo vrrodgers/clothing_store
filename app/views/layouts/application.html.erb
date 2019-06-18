@@ -23,7 +23,11 @@
   <body>
     <div class="layout">
       <%= render "shared/nav"%>
+
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
       <div class="wrapper">
+
          <%= yield %>
         <%= render "shared/footer"%>
       	<a class="scroll-top" href="#top"><i class="fa fa-angle-up"></i></a>

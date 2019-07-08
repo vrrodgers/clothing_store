@@ -1,15 +1,16 @@
 <section class="module">
     <div class="container">
         <div class="row">
-            <% 12.times do%>
+            <% @products.each do |product|%>
+
                 <div class="col-md-4">
                     <div class="shop-grid-item">
                         <div class="shop-item-thumb"><a href="#"><img src="http://placehold.it/626x800" alt=""></a>
                             <div class="shop-item-hidden"><a class="btn btn-block btn-dark" href="#">Add to cart</a></div>
                         </div>
                         <div class="shop-item-captions">
-                            <h6 class="shop-item-title">Mandarin collar shirt</h6>
-                            <h6 class="shop-item-price">$20.00</h6>
+                            <h6 class="shop-item-title"><%= product.name %></h6>
+                            <h6 class="shop-item-price"><%= number_to_currency(product.price, :unit => "$" ) %></h6>
                         </div>
                     </div>
                 </div>

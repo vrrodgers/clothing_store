@@ -23,27 +23,28 @@
 
                         
                         <li>
-                        <li class="menu-item-has-children"><a href="#">My Account</a>
+                        <li class="menu-item-has-children"><a href="#">My Account</a></li>
                         </li>
                       
                     <li class="menu-item-has-children">
                         <div class=" user-info">
                           
-                        <% if user_signed_in? %>
-                        <div class="dropdown">
-                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                 Signed in as: <strong><%= current_user.email %></strong> |
-                            </a>
-                            
-                               
-                                <%= link_to 'Edit Account', edit_user_registration_path, :class => 'navbar-link' %> - 
-                                <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'navbar-link' %>
-                                <%= link_to "Cart", cart_path, class: 'nav-link' %>
-                                <% else %>
-                                <%= link_to "Log In", new_user_session_path %></li>
-                                <%= link_to "Sign Up", new_user_registration_path %></li>
-                            <% end %>
+                            <% if user_signed_in? %>
+                            <div class="dropdown">
+                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Signed in as: <strong><%= current_user.email %></strong> |
+                                </a>
+                                
+                                
+                                    <%= link_to 'Edit Account', edit_user_registration_path, :class => 'navbar-link' %> - 
+                                    <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'navbar-link' %>
+                                    <%= link_to "Cart", cart_path, class: 'nav-link' %>
+                                    <% else %>
+                                    <%= link_to "Log In", new_user_session_path %></li>
+                                    <%= link_to "Sign Up", new_user_registration_path %></li>
+                                <% end %>
                         </div>
+
                     </li>
 
  

@@ -1,6 +1,10 @@
 
 
+Category.create!(
+    name: "clothes"
+)
 
+puts "1 category created"
 
 
 9.times do |product|

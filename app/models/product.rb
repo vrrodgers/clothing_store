@@ -3,6 +3,7 @@ class Product < ApplicationRecord
     has_many :sizes
     has_many :images
     has_many :orders
+    has_many :carted_items
 
     
     

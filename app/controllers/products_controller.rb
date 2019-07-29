@@ -4,6 +4,7 @@ class ProductsController < ApplicationController
    
     def index
         @products = Product.all
+            
     end
 
    def new
@@ -11,7 +12,7 @@ class ProductsController < ApplicationController
     
    end
    def show 
-    @image = Image.all
+    @image = Image.all    
    end
 
     def create
